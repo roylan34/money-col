@@ -1,0 +1,107 @@
+{
+  "name": "admin",
+  "version": "0.1.1",
+  "private": true,
+  "dependencies": {
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.3.2",
+    "@testing-library/user-event": "^7.1.2",
+    "@types/jest": "^24.0.0",
+    "@types/node": "^12.0.0",
+    "@types/react": "^16.9.0",
+    "@types/react-copy-to-clipboard": "^4.3.0",
+    "@types/react-dom": "^16.9.0",
+    "@types/react-virtualized": "^9.21.10",
+    "antd": "^4.6.4",
+    "axios": "^0.19.2",
+    "cross-env": "^7.0.2",
+    "firebase": "^7.15.5",
+    "formik": "^2.1.4",
+    "immutable": "^4.0.0-rc.12",
+    "interweave": "^12.6.0",
+    "memoize-one": "^5.1.1",
+    "moment": "^2.28.0",
+    "react": "^16.13.1",
+    "react-copy-to-clipboard": "^5.0.2",
+    "react-data-table-component": "^6.9.7",
+    "react-dom": "^16.13.1",
+    "react-redux": "^7.2.0",
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "3.4.1",
+    "react-toastify": "^6.1.0",
+    "react-virtualized": "^9.22.2",
+    "redux": "^4.0.5",
+    "redux-observable": "^1.2.0",
+    "redux-persist": "^6.0.0",
+    "redux-persist-transform-filter": "0.0.20",
+    "reselect": "^4.0.0",
+    "rxjs": "^6.5.5",
+    "styled-components": "^5.1.1",
+    "typescript": "~3.7.2",
+    "yup": "^0.28.5"
+  },
+  "scripts": {
+    "start": "bash ./src/scripts/dev.sh  && PORT=3006  react-app-rewired start",
+    "dev-script": "bash ./src/scripts/dev.sh",
+    "build": "react-app-rewired build",
+    "test": "CI=true react-scripts test",
+    "eject": "react-scripts eject",
+    "eslint:check": "eslint \"./src/**/*.{jsx,js,json,md,ts,tsx}\"",
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "pre-commit-bck": "npm run prettier:fix && npm run eslint:check && npm test && npm run e2e",
+    "pre-commit": "npm run prettier:fix && npm run eslint:check && npm test",
+    "prettier:check": "prettier --check \"./src/**/*.{jsx,js,json,md,ts,tsx}\"",
+    "prettier:fix": "prettier --write \"./src/**/*.{jsx,js,json,md,ts,tsx}\"",
+    "storybook": "start-storybook -p 6006 -c .storybook watch-css -s ./src",
+    "predeploy-webapp": "npm run build && rm -rf build_admin && mv build build_admin",
+    "predeploy-story": "npm run build-storybook",
+    "build-storybook": "build-storybook -c .storybook -s ./src/app/public -o build_story",
+    "deploy-dev-webapp": "bash ./src/scripts/dev.sh && npm run predeploy-webapp && firebase deploy --only hosting:admin",
+    "deploy-dev-story": "npm run predeploy-story && firebase deploy --only hosting:story",
+    "deploy-dev": "npm run deploy-dev-webapp && npm run deploy-dev-story && firebase deploy --only hosting",
+    "predeploy-dev": "firebase use dev",
+    "deploy-admin:ci": "cross-env NODE_ENV=staging firebase deploy --only hosting:dev,hosting:story --token $FIREBASE_TOKEN",
+    "predeploy-prod": "firebase use production",
+    "deploy-admin-prod:ci": "cross-env NODE_ENV=production firebase deploy --only hosting:prod --token $FIREBASE_TOKEN"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run pre-commit"
+    }
+  },
+  "devDependencies": {
+    "@babel/core": "^7.9.6",
+    "@react-native-community/eslint-config": "^1.1.0",
+    "@storybook/addon-actions": "^5.3.19",
+    "@storybook/addon-knobs": "^5.3.19",
+    "@storybook/addon-viewport": "^5.3.19",
+    "@storybook/react": "^5.3.19",
+    "@types/react-redux": "^7.1.9",
+    "@types/react-router-dom": "^5.1.5",
+    "@types/styled-components": "^5.1.0",
+    "@types/yup": "^0.26.37",
+    "babel-loader": "^8.1.0",
+    "customize-cra": "^1.0.0",
+    "firebase-tools": "^8.7.0",
+    "husky": "^4.2.5",
+    "prettier": "^1.19.1",
+    "react-app-rewired": "^2.1.6",
+    "redux-devtools-extension": "^2.13.8",
+    "ts-loader": "^8.0.2"
+  }
+}

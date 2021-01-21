@@ -1,0 +1,34 @@
+import React, { PureComponent } from 'react';
+
+class PayPal extends PureComponent {
+  render = (): React.ReactElement => {
+    return (
+      <svg
+        width="80"
+        height="40"
+        viewBox="0 0 80 40"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        xmlnsXlink="http://www.w3.org/1999/xlink">
+        <rect width="80" height="40" fill="url(#pattern0)" />
+        <defs>
+          <pattern
+            id="pattern0"
+            patternContentUnits="objectBoundingBox"
+            width="1"
+            height="1">
+            <use xlinkHref="#image0" transform="scale(0.00333333 0.00666667)" />
+          </pattern>
+          <image
+            id="image0"
+            width="300"
+            height="150"
+            xlinkHref="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAACWCAMAAABThUXgAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAAMAUExURUxpcQCc3gAwhgAvigAwiQCe3gCc3gAvhgAwhgCc3wAvhgAvhgBXqwAthgCd3wCc3gAvhQAuhgCc3wAvhgCc3gCe3gAtiAAvhwAuhgCc4AAtiQCg4QAqjgAuhwCc3gAsiwAwhwCc3gAvhgCe4wAxhwCe3wCc3wCCxgCc3gCg4QCc3gCc4ACf3wAwhQCj3wAwhQCe4AArjwCe4ACd3wAsiQCc3wAwhwAwiACc3wCf4ACb3wAtiwAvhgCa3wAuhgCd3gCc3wAtkQCf3wCc3wCd3wAwhwCb3wCe4QAuhgCb4ACi4QCd4QCd4ACe3wCb3wAshwAwhAAuiACZ3wAvhgCp5AAuhgAulgCd4QAsigBhqgCo4gCc3wAvhQCb3wCh4ACj4AAqkwCc3gApggAvhwAmpACc3gCHywAwhAAvhgAviAAxhQAxigAsiACb3wCh4ACo5gCY5QApmQAsjQApkAAsjwAnlQAvgwApkwAmnQAuhgAvhgCb4QCp4wBpsQAwhQCm4QCb3QArhAArjgAsjAArkQA4cwCh3wAmrgAviwCu5AAygwAmnwArkQCe4QAxhwAxhwCk4QBXoQAwjACe2gAlgwA0eAAxjgCp4gAmlQAjrAAviwAyhQCU3AAzfAAoegCp6ABLmAA7kACO0gAzfQCI3QB/xQB5wACV4AC57gAtmwCW6QAskQAxdQAmgQA1hQAjeABxvABvuQAMawBYqQEhagDK/wC05gCY3QAwfQAzhwAvhAA5kAAvhgCc3gEgaQAwhgCb3gCc3QAuhwCZ3QCe4AEfaAAvhQCd3wCb3QAvhAAuhQAvgwAxiwAuhgEeZgCd3QAwggArfgCd3wAthAEdZACa3QAwhQAwgQAwiQEhagAuiAEbZQEYYgAzhgAyiwC4+AAyggAyfACn6AAyfwArgQCg4gCp6gEOWQEoeQCV2wCs7QEJUwCt7gAdeACj5AEDTgCa3gA1fwAjfQEmcQCw7gEjbgEVXwCR1wAZcwC09QA0dwCx8AAmgACg2wBClQCb4nWcpKMAAADydFJOUwDnd0IFBfPcl5j6ugLRifzyiWvn+dMd5MYkhB4aU9sPpy4nCzkH6v7HPnyhRXoQLxQSgOJgv3yc9WKbZ2XTq3rwCzTEVLFOF79XroNcns49cd9k6ie1fXIy/oe1j49npnK6Ku9SqP7J1yLfSH+ty2I4adHsvo9NmCr1W0qP/aFzlLfcxq39uDTuSuw+W5Bs2dr+ouyZr7lWtGrUz3hWhZ7+/v7hR/7+6nfXxfm2ovNa/f660/2Vevz71v6L///////////////////////////////////////////////////////////////////////+xVWAFQAADIhJREFUeNrsWwlQFFcabgEVUTAgKKIgAiIKKCKXKIgiHgFUvC+Mt0bFeCTxWo+4JlGT9cgme4RsNmuOve+rtmrangPGGYZjHORU5BBEZVXU9TbZ7e73Xs/rme6ZwaZS2ar3VVHFe93vnzdf/+8/eyiKgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICA4P8CSd697bFpk/fMUN+EsYQeEdxUJSoZsBd6e84hFFkxSOUY+r4RhCSIKV5OyFKVmRYRmgCWqJyjJIjwxGOfC2Sp9BMJURyCXCFLVTaQMMUitMwltkIJUywKVa5hHKGK8njJNa6M7xOuqDAXFavmDcIV9aZrJktVRowWm+yIyaq9UmqL2lqGu5JFuKIO6jGqtKWtF2zR2lrJlF6pJe6QRSCeRZdeL7dDcXHdg/vXTVc+JVz1m4+fwcry8nPF9ii/eLH4EskPqVdxg1V6ofycDMo7Rv7dsaSxK5I9cfjODX61Gzc67XBqHwyHs/1i4lxf7ccvTh2tbA9bcLKuXL8oR9blc2dbEh0JGlddbe9CN67y6CauRp2n7ZCyfJaLqwdr4BJlmzipd42s9rstber1DlnXSxV3Pn+ze8jyqaKlkDnYpdXTIVkpyjbhifvC2vtyZNV1nHlC0xUx8oLmSpdbjXd/2i1kvayTJKvCf7srqxfD2zOUbWImFmbVqurkbFZ5+8hnNK0JkReULE2WtvbtbilLp1kkyaLV/ce4sDq6gr9Zt03ZJgZh37HWdK5YRrHam1vauI+T1/qZcoX85l93A1fhKbQMWUWTXVieCW7ufEXRJobaOEM5su4sbTRwn7bSOeuMDVn15m7oEA2n5WBIcyE+iuwEN8cr2sQc15zhwwd0C6/Hy5yzPiAra2FgHsZZzapuCBwQN52z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"
+          />
+        </defs>
+      </svg>
+    );
+  };
+}
+
+export default PayPal;

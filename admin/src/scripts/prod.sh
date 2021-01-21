@@ -1,0 +1,1 @@
+echo $FIREBASE_CONFIG_PROD | base64 --decode > .env

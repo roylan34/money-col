@@ -1,0 +1,15 @@
+import {
+  paths,
+  PRIVACY_POLICY_URL,
+  PRIVACY_POLICY_URL_MOBILE,
+  TERMS_OF_SERVICES_URL,
+  TERMS_OF_SERVICES_URL_MOBILE,
+} from '../../../../shared/constants/routes/urls';
+
+export {
+  paths,
+  PRIVACY_POLICY_URL,
+  PRIVACY_POLICY_URL_MOBILE,
+  TERMS_OF_SERVICES_URL,
+  TERMS_OF_SERVICES_URL_MOBILE,
+};

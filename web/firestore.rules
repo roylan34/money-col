@@ -1,0 +1,137 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function isSignedIn() {
+      return request.auth != null;
+    }
+    function getRoles() {
+      return get(/databases/$(database)/documents/users/$(request.auth.uid)).data.roles;
+    }
+    function isSubscriber() {
+      return isSignedIn() && getRoles().subscriber
+    }
+    function isLecturer() {
+      return isSignedIn() && getRoles().lecturer
+    }
+    function isAdmin() {
+      return isSignedIn() && getRoles().admin
+    }
+
+    match /users/{userId} {
+      allow create, update;
+      allow delete: if isAdmin() && request.resource.data.roles.lecturer;
+
+      match /purchases/{purchase} {
+        allow create, update: if isSubscriber();
+      }
+      match /transactions/{transaction} {
+        allow create, update: if isSubscriber();
+      }
+    }
+
+    match /users/{userId} {
+      allow read: if isAdmin();
+      allow list: if isSubscriber() && resource.data.roles.lecturer;
+      allow get: if isSubscriber() && resource.data.roles.lecturer;
+      allow get: if isSubscriber() && request.auth.uid == userId;
+      allow get: if isLecturer() && request.auth.uid == userId;
+      allow get: if isLecturer() && resource.data.roles.subscriber;
+
+      match /purchases/{purchase} {
+        allow read: if isSubscriber();
+        allow read: if isAdmin();
+      }
+      match /transactions/{transaction} {
+        allow read: if isSubscriber();
+        allow read: if isAdmin();
+      }
+    }
+
+    match /EAPrograms/{eaPrograms} {
+      allow create: if isAdmin();
+      allow update: if isAdmin();
+      allow update: if isSubscriber();
+    }
+
+    match /EAPrograms/{eaPrograms} {
+      allow read: if isAdmin();
+      allow read: if isSubscriber();
+    }
+
+    match /conversations/{conversation} {
+      allow read, write: if isSignedIn();
+
+      match /messages/{message} {
+        allow read, write: if isSignedIn();
+      }
+    }
+
+    match /giveaways/{giveaway} {
+      allow read, write: if isAdmin();
+      allow read: if isSubscriber();
+    }
+
+    match /mail/{mail} {
+      allow read, write: if isSignedIn();
+    }
+
+    match /mailTemplates/{template} {
+      allow read;
+    }
+
+    match /manuals/{manual} {
+      allow create: if isAdmin();
+      allow update: if isAdmin();
+    }
+
+    match /manuals/{manual} {
+      allow read: if isAdmin();
+      allow read: if isSubscriber();
+    }
+
+    match /paymentHistory/{history} {
+      allow create: if request.resource.data.userId == request.auth.uid;
+      allow update: if resource.data.userId == request.auth.uid;
+    }
+
+    match /paymentHistory/{history} {
+      allow read, write: if isAdmin();
+      allow read: if resource.data.userId == request.auth.uid;
+    }
+
+    match /projectContents/{projectContent} {
+      allow create: if isAdmin();
+      allow update: if isAdmin();
+      allow update: if isSubscriber();
+    }
+
+    match /projectContents/{projectContent} {
+      allow read: if isAdmin();
+      allow read: if isSubscriber();
+    }
+
+    match /settings/{setting} {
+      allow read;
+    }
+
+    match /topItems/{topItem} {
+      allow create, update: if isAdmin();
+    }
+
+    match /topItems/{topItem} {
+      allow read: if isAdmin();
+      allow read: if isSubscriber();
+    }
+
+    match /videoLectures/{videoLecture} {
+      allow create: if isAdmin();
+      allow update: if isAdmin();
+      allow update: if isSubscriber();
+    }
+
+    match /videoLectures/{videoLecture} {
+      allow read: if isAdmin();
+      allow read: if isSubscriber();
+    }
+  }
+}

@@ -1,0 +1,7 @@
+
+{
+    "viewportWidth": 1280,
+    "viewportHeight": 960,
+    "screenshotsFolder": "./cypress/snapshots/actual",
+    "trashAssetsBeforeRuns": true
+}

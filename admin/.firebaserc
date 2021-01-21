@@ -1,0 +1,25 @@
+{
+  "projects": {
+    "dev": "money-college-dev-8a907",
+    "production": "money-college-prod"
+  },
+  "targets": {
+    "money-college-dev-8a907": {
+      "hosting": {
+        "dev": [
+          "money-college-admin"
+        ],
+        "story": [
+          "money-college-admin-storybook"
+        ]
+      }
+    },
+    "money-college-prod": {
+      "hosting": {
+        "prod": [
+          "money-college-prod-admin"
+        ]
+      }
+    }
+  }
+}

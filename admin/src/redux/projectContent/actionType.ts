@@ -1,0 +1,31 @@
+// create project content
+export const ADD_PROJECT_CONTENT_REQUEST =
+  'projectContent/ADD_PROJECT_CONTENT_REQUEST';
+export const ADD_PROJECT_CONTENT_SUCCESS =
+  'projectContent/ADD_PROJECT_CONTENT_SUCCESS';
+export const ADD_PROJECT_CONTENT_FAILURE =
+  'projectContent/ADD_PROJECT_CONTENT_FAILURE';
+
+// fetch project contents
+export const FETCH_PROJECT_CONTENTS_REQUEST =
+  'projectContent/FETCH_PROJECT_CONTENTS_REQUEST';
+export const FETCH_PROJECT_CONTENTS_SUCCESS =
+  'projectContent/FETCH_PROJECT_CONTENTS_SUCCESS';
+export const FETCH_PROJECT_CONTENTS_FAILURE =
+  'projectContent/FETCH_PROJECT_CONTENTS_FAILURE';
+
+// update project content
+export const UPDATE_PROJECT_CONTENT_REQUEST =
+  'projectContent/UPDATE_PROJECT_CONTENT_REQUEST';
+export const UPDATE_PROJECT_CONTENT_SUCCESS =
+  'projectContent/UPDATE_PROJECT_CONTENT_SUCCESS';
+export const UPDATE_PROJECT_CONTENT_FAILURE =
+  'projectContent/UPDATE_PROJECT_CONTENT_FAILURE';
+
+// delete project content
+export const DELETE_PROJECT_CONTENTS_REQUEST =
+  'projectContent/DELETE_PROJECT_CONTENTS_REQUEST';
+export const DELETE_PROJECT_CONTENTS_SUCCESS =
+  'projectContent/DELETE_PROJECT_CONTENTS_SUCCESS';
+export const DELETE_PROJECT_CONTENTS_FAILURE =
+  'projectContent/DELETE_PROJECT_CONTENTS_FAILURE';

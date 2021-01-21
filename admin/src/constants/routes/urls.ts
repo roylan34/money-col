@@ -1,0 +1,17 @@
+export const paths: { [key: string]: string } = {
+  root: '/',
+  home: '/home',
+  login: '/login',
+  updatePassword: '/update-password',
+  teachers: '/teachers',
+  videos: '/videos',
+  projectContents: '/project-contents',
+  eaPrograms: '/ea-programs',
+  manuals: '/articles',
+  instructors: '/teachers',
+  mailbox: '/mailbox',
+  instructorMailbox: '/teachers/mail',
+  users: '/users',
+  userDetails: '/users/detail',
+  pendingPayments: '/pending-payments',
+};

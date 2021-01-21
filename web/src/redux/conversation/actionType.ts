@@ -1,0 +1,41 @@
+// add or update conversation
+export const CREATE_OR_UPDATE_CONVERSATION_REQUEST =
+  'conversation/CREATE_OR_UPDATE_CONVERSATION_REQUEST';
+export const CREATE_OR_UPDATE_CONVERSATION_SUCCESS =
+  'conversation/CREATE_OR_UPDATE_CONVERSATION_SUCCESS';
+export const CREATE_OR_UPDATE_CONVERSATION_FAILURE =
+  'conversation/CREATE_OR_UPDATE_CONVERSATION_FAILURE';
+
+// get conversations
+export const GET_CONVERSATIONS_REQUEST =
+  'conversation/GET_CONVERSATIONS_REQUEST';
+export const GET_CONVERSATIONS_SUCCESS =
+  'conversation/GET_CONVERSATIONS_SUCCESS';
+export const GET_CONVERSATIONS_FAILURE =
+  'conversation/GET_CONVERSATIONS_FAILURE';
+
+// get messages
+export const GET_MESSAGES_REQUEST = 'conversation/GET_MESSAGES_REQUEST';
+export const GET_MESSAGES_SUCCESS = 'conversation/GET_MESSAGES_SUCCESS';
+export const GET_MESSAGES_FAILURE = 'conversation/GET_MESSAGES_FAILURE';
+
+// get conversations by id
+export const GET_CONVERSATION_BY_ID_REQUEST =
+  'conversation/GET_CONVERSATION_BY_ID_REQUEST';
+export const GET_CONVERSATION_BY_ID_SUCCESS =
+  'conversation/GET_CONVERSATION_BY_ID_SUCCESS';
+export const GET_CONVERSATION_BY_ID_FAILURE =
+  'conversation/GET_CONVERSATION_BY_ID_FAILURE';
+
+// update conversations read status
+export const UPDATE_CONVERSATION_READ_STATUS_REQUEST =
+  'conversation/UPDATE_CONVERSATION_READ_STATUS_REQUEST';
+export const UPDATE_CONVERSATION_READ_STATUS_SUCCESS =
+  'conversation/UPDATE_CONVERSATION_READ_STATUS_SUCCESS';
+export const UPDATE_CONVERSATION_READ_STATUS_FAILURE =
+  'conversation/UPDATE_CONVERSATION_READ_STATUS_FAILURE';
+
+// get file to blob data
+export const GET_FILE_TO_BLOB_REQUEST = 'conversation/GET_FILE_TO_BLOB_REQUEST';
+export const GET_FILE_TO_BLOB_SUCCESS = 'conversation/GET_FILE_TO_BLOB_SUCCESS';
+export const GET_FILE_TO_BLOB_FAILURE = 'conversation/GET_FILE_TO_BLOB_FAILURE';

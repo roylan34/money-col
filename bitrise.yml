@@ -1,0 +1,205 @@
+format_version: '8'
+default_step_lib_source: https://github.com/bitrise-io/bitrise-steplib.git
+project_type: react-native
+workflows:
+  qa:
+    steps:
+    - trigger-bitrise-workflow@0:
+        inputs:
+        - workflow_id: qa-web-app
+        - api_token: "$APP_TRIGGER_TOKEN"
+    - trigger-bitrise-workflow@0:
+        inputs:
+        - workflow_id: qa-web-admin
+        - api_token: "$APP_TRIGGER_TOKEN"
+    - slack@3:
+        inputs:
+        - api_token: "$SLACK_API_TOKEN"
+        - pretext: "*QA BUILD STARTED*"
+  production:
+    steps:
+    - trigger-bitrise-workflow@0:
+        inputs:
+        - workflow_id: prod-web-app
+        - api_token: "$APP_TRIGGER_TOKEN"
+    - trigger-bitrise-workflow@0:
+        inputs:
+        - workflow_id: prod-web-admin
+        - api_token: "$APP_TRIGGER_TOKEN"
+    - slack@3:
+        inputs:
+        - api_token: "$SLACK_API_TOKEN"
+        - pretext: "*PRODUCTION BUILD STARTED*"
+  prod-web-app:
+    steps:
+    - npm@1:
+        inputs:
+        - workdir: "web"
+        - command: install
+    - npm@1:
+        inputs:
+        - workdir: "web"
+        - command: run predeploy-prod
+    - script@1:
+        title: Env credentials
+        inputs:
+        - working_dir: "$BITRISE_SOURCE_DIR/web"
+        - content: |-
+            #!/usr/bin/env bash
+            # fail if any commands fails
+            set -e
+            # debug log
+            set -x
+
+            # write your script here
+
+            bash ./src/scripts/prod.sh
+    - npm@1:
+        inputs:
+        - workdir: "web"
+        - command: run build
+    - npm@1:
+        inputs:
+        - workdir: "web"
+        - command: run deploy-prod:ci
+    - slack@3:
+        inputs:
+        - api_token: "$SLACK_API_TOKEN"
+        - text: Deployment app to https://money-college-prod.web.app is complete.
+        - text_on_error: "$SLACK_ERROR_TEXT"
+        - channel: "$SLACK_CHANNEL"
+        - webhook_url: "$SLACK_WEBHOOK_URL"
+  qa-web-app:
+    steps:
+    - npm@1:
+        inputs:
+        - workdir: "web"
+        - command: install
+    - npm@1:
+        inputs:
+        - workdir: "web"
+        - command: run predeploy-dev
+    - script@1:
+        title: Env credentials
+        inputs:
+        - working_dir: "$BITRISE_SOURCE_DIR/web"
+        - content: |-
+            #!/usr/bin/env bash
+            # fail if any commands fails
+            set -e
+            # debug log
+            set -x
+
+            # write your script here
+
+            bash ./src/scripts/dev.sh
+    - npm@1:
+        inputs:
+        - workdir: "web"
+        - command: run build
+    - npm@1:
+        inputs:
+        - workdir: "web"
+        - command: run build-storybook
+    - npm@1:
+        inputs:
+        - workdir: "web"
+        - command: run deploy-dev:ci
+    - slack@3:
+        inputs:
+        - api_token: "$SLACK_API_TOKEN"
+        - text: Deployment of storybook and app to https://money-college-dev.web.app and https://money-college-story.web.app is complete.
+        - text_on_error: "$SLACK_ERROR_TEXT"
+        - channel: "$SLACK_CHANNEL"
+        - webhook_url: "$SLACK_WEBHOOK_URL"
+  prod-web-admin:
+    steps:
+    - npm@1:
+        inputs:
+        - workdir: "admin"
+        - command: install
+    - npm@1:
+        inputs:
+        - workdir: "admin"
+        - command: run predeploy-prod
+    - script@1:
+        title: Env credentials
+        inputs:
+        - working_dir: "$BITRISE_SOURCE_DIR/admin"
+        - content: |-
+            #!/usr/bin/env bash
+            # fail if any commands fails
+            set -e
+            # debug log
+            set -x
+
+            # write your script here
+
+            bash ./src/scripts/prod.sh
+    - npm@1:
+        inputs:
+        - workdir: "admin"
+        - command: run build
+    - npm@1:
+        inputs:
+        - workdir: "admin"
+        - command: run deploy-admin-prod:ci
+    - slack@3:
+        inputs:
+        - api_token: "$SLACK_API_TOKEN"
+        - text: Deployment of admin app to https://money-college-prod-admin.web.app is complete.
+        - text_on_error: "$SLACK_ERROR_TEXT"
+        - channel: "$SLACK_CHANNEL"
+        - webhook_url: "$SLACK_WEBHOOK_URL"
+  qa-web-admin:
+    steps:
+    - npm@1:
+        inputs:
+        - workdir: "admin"
+        - command: install
+    - npm@1:
+        inputs:
+        - workdir: "admin"
+        - command: run predeploy-dev
+    - script@1:
+        title: Env credentials
+        inputs:
+        - working_dir: "$BITRISE_SOURCE_DIR/web"
+        - content: |-
+            #!/usr/bin/env bash
+            # fail if any commands fails
+            set -e
+            # debug log
+            set -x
+
+            # write your script here
+
+            bash ./src/scripts/dev.sh
+    - npm@1:
+        inputs:
+        - workdir: "admin"
+        - command: run build
+    - npm@1:
+        inputs:
+        - workdir: "admin"
+        - command: run build-storybook
+    - npm@1:
+        inputs:
+        - workdir: "admin"
+        - command: run deploy-admin:ci
+    - slack@3:
+        inputs:
+        - api_token: "$SLACK_API_TOKEN"
+        - text: Deployment of storybook and app to https://money-college-admin.web.app and https://money-college-admin-storybook.web.app is complete.
+        - text_on_error: "$SLACK_ERROR_TEXT"
+        - channel: "$SLACK_CHANNEL"
+        - webhook_url: "$SLACK_WEBHOOK_URL"
+app:
+  envs:
+  - opts:
+      is_expand: false
+    SLACK_ERROR_TEXT: "Build failed"
+  - opts:
+      is_expand: false
+    SLACK_CHANNEL: ""
+trigger_map: []

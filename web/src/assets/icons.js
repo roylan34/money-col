@@ -1,0 +1,17 @@
+export const greaterThanArrow = require('./images/greaterThan/greaterThan.svg');
+export const whiteGreaterThan = require('./images/greaterThan/icon.svg');
+export const paperClip = require('./images/paperClip/icon.svg');
+export const bluePaperClip = require('./images/paperClip/blue.svg');
+export const select = require('./images/select/icon.svg');
+export const close = require('./images/close/icon.svg');
+export const brandLogo = require('./images/brandLogo/brandLogo.svg');
+export const mobileBrandLogo = require('./images/brandLogo/whiteBrandLogo.svg');
+export const check = require('./images/check/check.svg');
+export const home = require('./images/home/white.svg');
+export const orangeHome = require('./images/home/orange.svg');
+export const qr = require('./images/qr/icon.png');
+export const contactBackground = require('./images/contact/icon.png');
+export const attachedFile = require('./images/attachedFile/icon.svg');
+export const settingsCheck = require('./images/check/settingsCheck.svg');
+export const download = require('./images/download/icon.svg');
+export const mobileDownload = require('./images/download/mobileDownload.svg');

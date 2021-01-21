@@ -1,0 +1,34 @@
+{
+  "name": "money-college",
+  "version": "1.0.0",
+  "description": "open `web`, `admin` and `shared` on their own separate vscode window.",
+  "main": "index.js",
+  "scripts": {
+    "pre-commit:web": "npm run prettier:fix --prefix ./web && npm run eslint:check --prefix ./web",
+    "pre-commit:shared": "npm run prettier:fix --prefix ./shared && npm run eslint:check --prefix ./shared",
+    "pre-commit:admin": "npm run prettier:fix --prefix ./admin && npm run eslint:check --prefix ./admin",
+    "pre-commit": "npm run pre-commit:shared && npm run pre-commit:web && npm run pre-commit:admin",
+    "cypress": "cypress open",
+    "cypress:run": "cypress run",
+    "cypress:snapshot:base": "cypress run --env type=base --config screenshotsFolder=cypress/snapshots/base,testFiles=\"**/*regression-tests.js\"",
+    "cypress:snapshot": "cypress run --env type=actual --config testFiles=\"**/*regression-tests.js\"",
+    "start:emulate": "npm run start:emulate --prefix ./web",
+    "start:emulate:token": "npm run start:emulate:token --prefix ./web",
+    "cypress:ci": "cypress run --spec \"cypress/integration/web/signup.spec.js\" --headless --config watchForFileChanges=false",
+    "cypress:test:ci": "start-server-and-test start:emulate:token http://localhost:3000 cypress:ci",
+    "cypress:test": "start-server-and-test start:emulate http://localhost:3000 cypress:ci"
+  },
+  "author": "",
+  "license": "ISC",
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run pre-commit"
+    }
+  },
+  "devDependencies": {
+    "cypress": "^5.6.0",
+    "cypress-visual-regression": "^1.5.5",
+    "husky": "^4.2.5",
+    "start-server-and-test": "^1.11.6"
+  }
+}
